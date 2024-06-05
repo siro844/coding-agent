@@ -18,7 +18,7 @@ from typing import List
 from langchain.output_parsers import PydanticOutputParser
 from langchain_anthropic import ChatAnthropic
 # llm = ChatAnthropic(model='claude-3-opus-20240229',streaming=True)
-
+llm =GoogleGenerativeAI(model="gemini-pro",streaming=True)
 url="https://python.langchain.com/docs/expression_language/"
 loader=RecursiveUrlLoader(
     url=url,
@@ -42,7 +42,7 @@ class code(BaseModel):
     imports:str=Field(description="Code block import Statements")
     code:str=Field(description="Code block not including import statements")
 
-llm =GoogleGenerativeAI(model="gemini-pro",streaming=True)
+
 parser=PydanticOutputParser(pydantic_object=code)
 template="""
 You are a coding assistant with expertise in LCEL,langchain expresssion language.\n
